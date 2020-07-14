@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Website</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">       
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+       
+    </head>
+    <body>
+        <!--Navigation Menu-->
+        <section id="navigation">
+            <div class="row">
+                <div class="col-md-9">
+                  <div> <img src="logo.jfif" alt="aptence"></div> 
+                  <div><pre>A P T E N C E</pre></div>
+                </div>
+                <div class="col-md-3 ">
+                 <div class="text-right"><button type="button" class="btn"><i class="fa fa-sign-out"></i>Log Out</button>
+                 </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Main Menu-->
+        <section id="mainmenu">
+            <div class="row">
+                <div class="col-md-3" >
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="#"><i class="fa fa-columns"></i>Dashboard</a></li>
+                        <li class="list-group-item"><a href="#"><i class="fa fa-book"></i>Question Bank</a></li>
+                        <li class="list-group-item"><a href="#"><i class="fa fa-address-book"></i>Content</a></li>
+                        <li class="list-group-item"><a href="#"><i class="fa fa-question"></i>Tagged Questions</a></li>
+                        <li class="list-group-item"><a href="#"><i class="fa fa-question"></i>Question Status</a></li>
+                        <li class="list-group-item"><a href="#"><i class="fa fa-book"></i>Challenge</a></li>
+                        <li class="list-group-item "><a href="#"><i class="fa fa-question"></i>Activity</a></li>
+                     </ul>
+
+                </div>
+                <div class="col-md-9">
+                    <h3 style="text-align: center; color:darkorange;">6318 Total Questions</h3>
+                    <div class="row">
+                        <div class="col-md-6 graphone ">
+                           
+                            <figure class="highcharts-figure">
+                                <div id="container"></div>
+                                
+                            </figure>
+                      
+
+                        </div>
+                        <div class="col-md-6 graphtwo">
+                            <figure class="highcharts-figure">
+                                <div id="containerone"></div>
+                               
+                            </figure>
+                            
+                        </div>
+                    </div>
+                    <div class="linegraph">
+                        <figure class="highcharts-figure">
+                            <div id="containertwo"></div>
+                            
+                        </figure>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <script>
+            Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Class-Wise Questions'
+    },
+    subtitle: {
+        text: 'Resize the frames or click buttons to change appearance'
+    },
+    xAxis: {
+        categories: [
+            'VII',
+            'VIII',
+            'IX',
+            'V',
+            'VI',
+            'X',
+            'XI',
+            'XII',
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Amount'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.15,
+            borderWidth: 0
+        }
+    },
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        layout: 'vertical',
+        x: 10,
+        y: 150
+    },
+
+    series: [{
+        name: 'Math',
+        data: [49.9, 71.5, 90.4, 89.2, 74.0, 76.0, 65.6, 48.5],
+        color:'rgb(11, 167, 167)'
+    },  {
+        name: 'English',
+        data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6],
+        color:'blue'
+
+    }, {
+        name: 'Logic',
+        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4],
+        color:'darkorange'
+
+    }]
+});
+        
+        </script>
+        <script>
+        Highcharts.chart('containerone', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false,
+    },
+    title: {
+        text: 'Subject-Wise<br> Questions',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 85
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -40,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '100%'],
+            size: '150%'
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Questions',
+        innerSize: '50%',
+        data: [
+            ['Logic', 58],
+            ['Words', 22],
+            ['Maths', 40],
+           
+        ]
+    }]
+});
+
+        </script>
+        <script>
+        Highcharts.chart('containertwo', {
+
+title: {
+    text: 'Monthaly Update Questions'
+},
+
+subtitle: {
+    text: '<pre>(January-December)<pre>'
+},
+
+yAxis: {
+    title: {
+        text: 'Number of Employees'
+    }
+},
+
+xAxis: {
+    accessibility: {
+        rangeDescription: 'Range: 2010 to 2017'
+    }
+},
+
+legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+},
+
+plotOptions: {
+    series: {
+        label: {
+            connectorAllowed: false
+        },
+        pointStart: 2010
+    }
+},
+
+series: [{
+    name: 'Installation',
+    data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
+}, {
+    name: 'Manufacturing',
+    data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+}, {
+    name: 'Sales & Distribution',
+    data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+}, {
+    name: 'Project Development',
+    data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+}, {
+    name: 'Other',
+    data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+}],
+
+responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 500
+        },
+        chartOptions: {
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+            }
+        }
+    }]
+}
+
+});
+        </script>
+    </body>
+</html>
